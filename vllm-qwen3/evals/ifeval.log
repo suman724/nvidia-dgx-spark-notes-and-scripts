@@ -1,0 +1,901 @@
++ python -V
+Python 3.11.14
++ pip install -U pip
+Requirement already satisfied: pip in /usr/local/lib/python3.11/site-packages (24.0)
+Collecting pip
+  Downloading pip-25.3-py3-none-any.whl.metadata (4.7 kB)
+Downloading pip-25.3-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 11.5 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 24.0
+    Uninstalling pip-24.0:
+      Successfully uninstalled pip-24.0
+Successfully installed pip-25.3
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
++ pip install -U lm-eval tenacity langdetect immutabledict
+Collecting lm-eval
+  Downloading lm_eval-0.4.9.2-py3-none-any.whl.metadata (53 kB)
+Collecting tenacity
+  Downloading tenacity-9.1.2-py3-none-any.whl.metadata (1.2 kB)
+Collecting langdetect
+  Downloading langdetect-1.0.9.tar.gz (981 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 981.5/981.5 kB 16.6 MB/s  0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting immutabledict
+  Downloading immutabledict-4.2.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting accelerate>=0.26.0 (from lm-eval)
+  Downloading accelerate-1.12.0-py3-none-any.whl.metadata (19 kB)
+Collecting evaluate (from lm-eval)
+  Downloading evaluate-0.4.6-py3-none-any.whl.metadata (9.5 kB)
+Collecting datasets>=2.16.0 (from lm-eval)
+  Downloading datasets-4.4.2-py3-none-any.whl.metadata (19 kB)
+Collecting jsonlines (from lm-eval)
+  Downloading jsonlines-4.0.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting numexpr (from lm-eval)
+  Downloading numexpr-2.14.1-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (9.0 kB)
+Collecting peft>=0.2.0 (from lm-eval)
+  Downloading peft-0.18.0-py3-none-any.whl.metadata (14 kB)
+Collecting pybind11>=2.6.2 (from lm-eval)
+  Downloading pybind11-3.0.1-py3-none-any.whl.metadata (10.0 kB)
+Collecting pytablewriter (from lm-eval)
+  Downloading pytablewriter-1.2.1-py3-none-any.whl.metadata (38 kB)
+Collecting rouge-score>=0.0.4 (from lm-eval)
+  Downloading rouge_score-0.1.2.tar.gz (17 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting sacrebleu>=1.5.0 (from lm-eval)
+  Downloading sacrebleu-2.5.1-py3-none-any.whl.metadata (51 kB)
+Collecting scikit-learn>=0.24.1 (from lm-eval)
+  Downloading scikit_learn-1.8.0-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (11 kB)
+Collecting sqlitedict (from lm-eval)
+  Downloading sqlitedict-2.1.0.tar.gz (21 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting torch>=1.8 (from lm-eval)
+  Downloading torch-2.9.1-cp311-cp311-manylinux_2_28_aarch64.whl.metadata (30 kB)
+Collecting tqdm-multiprocess (from lm-eval)
+  Downloading tqdm_multiprocess-0.0.11-py3-none-any.whl.metadata (5.7 kB)
+Collecting transformers>=4.1 (from lm-eval)
+  Downloading transformers-4.57.3-py3-none-any.whl.metadata (43 kB)
+Collecting zstandard (from lm-eval)
+  Downloading zstandard-0.25.0-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.whl.metadata (3.3 kB)
+Collecting dill (from lm-eval)
+  Downloading dill-0.4.0-py3-none-any.whl.metadata (10 kB)
+Collecting word2number (from lm-eval)
+  Downloading word2number-1.1.zip (9.7 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting more_itertools (from lm-eval)
+  Downloading more_itertools-10.8.0-py3-none-any.whl.metadata (39 kB)
+Collecting six (from langdetect)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting numpy>=1.17 (from accelerate>=0.26.0->lm-eval)
+  Downloading numpy-2.4.0-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (6.6 kB)
+Collecting packaging>=20.0 (from accelerate>=0.26.0->lm-eval)
+  Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting psutil (from accelerate>=0.26.0->lm-eval)
+  Downloading psutil-7.2.1-cp36-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (22 kB)
+Collecting pyyaml (from accelerate>=0.26.0->lm-eval)
+  Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.4 kB)
+Collecting huggingface_hub>=0.21.0 (from accelerate>=0.26.0->lm-eval)
+  Downloading huggingface_hub-1.2.3-py3-none-any.whl.metadata (13 kB)
+Collecting safetensors>=0.4.3 (from accelerate>=0.26.0->lm-eval)
+  Downloading safetensors-0.7.0-cp38-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (4.1 kB)
+Collecting filelock (from datasets>=2.16.0->lm-eval)
+  Downloading filelock-3.20.2-py3-none-any.whl.metadata (2.1 kB)
+Collecting pyarrow>=21.0.0 (from datasets>=2.16.0->lm-eval)
+  Downloading pyarrow-22.0.0-cp311-cp311-manylinux_2_28_aarch64.whl.metadata (3.2 kB)
+Collecting pandas (from datasets>=2.16.0->lm-eval)
+  Downloading pandas-2.3.3-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl.metadata (91 kB)
+Collecting requests>=2.32.2 (from datasets>=2.16.0->lm-eval)
+  Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting httpx<1.0.0 (from datasets>=2.16.0->lm-eval)
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting tqdm>=4.66.3 (from datasets>=2.16.0->lm-eval)
+  Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Collecting xxhash (from datasets>=2.16.0->lm-eval)
+  Downloading xxhash-3.6.0-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (13 kB)
+Collecting multiprocess<0.70.19 (from datasets>=2.16.0->lm-eval)
+  Downloading multiprocess-0.70.18-py311-none-any.whl.metadata (7.5 kB)
+Collecting fsspec<=2025.10.0,>=2023.1.0 (from fsspec[http]<=2025.10.0,>=2023.1.0->datasets>=2.16.0->lm-eval)
+  Downloading fsspec-2025.10.0-py3-none-any.whl.metadata (10 kB)
+Collecting aiohttp!=4.0.0a0,!=4.0.0a1 (from fsspec[http]<=2025.10.0,>=2023.1.0->datasets>=2.16.0->lm-eval)
+  Downloading aiohttp-3.13.3-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (8.1 kB)
+Collecting anyio (from httpx<1.0.0->datasets>=2.16.0->lm-eval)
+  Downloading anyio-4.12.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting certifi (from httpx<1.0.0->datasets>=2.16.0->lm-eval)
+  Downloading certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1.0.0->datasets>=2.16.0->lm-eval)
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx<1.0.0->datasets>=2.16.0->lm-eval)
+  Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1.0.0->datasets>=2.16.0->lm-eval)
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting hf-xet<2.0.0,>=1.2.0 (from huggingface_hub>=0.21.0->accelerate>=0.26.0->lm-eval)
+  Downloading hf_xet-1.2.0-cp37-abi3-manylinux_2_28_aarch64.whl.metadata (4.9 kB)
+Collecting shellingham (from huggingface_hub>=0.21.0->accelerate>=0.26.0->lm-eval)
+  Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting typer-slim (from huggingface_hub>=0.21.0->accelerate>=0.26.0->lm-eval)
+  Downloading typer_slim-0.21.0-py3-none-any.whl.metadata (16 kB)
+Collecting typing-extensions>=3.7.4.3 (from huggingface_hub>=0.21.0->accelerate>=0.26.0->lm-eval)
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2025.10.0,>=2023.1.0->datasets>=2.16.0->lm-eval)
+  Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2025.10.0,>=2023.1.0->datasets>=2.16.0->lm-eval)
+  Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting attrs>=17.3.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2025.10.0,>=2023.1.0->datasets>=2.16.0->lm-eval)
+  Downloading attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2025.10.0,>=2023.1.0->datasets>=2.16.0->lm-eval)
+  Downloading frozenlist-1.8.0-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (20 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2025.10.0,>=2023.1.0->datasets>=2.16.0->lm-eval)
+  Downloading multidict-6.7.0-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (5.3 kB)
+Collecting propcache>=0.2.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2025.10.0,>=2023.1.0->datasets>=2.16.0->lm-eval)
+  Downloading propcache-0.4.1-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (13 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2025.10.0,>=2023.1.0->datasets>=2.16.0->lm-eval)
+  Downloading yarl-1.22.0-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (75 kB)
+Collecting charset_normalizer<4,>=2 (from requests>=2.32.2->datasets>=2.16.0->lm-eval)
+  Downloading charset_normalizer-3.4.4-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (37 kB)
+Collecting urllib3<3,>=1.21.1 (from requests>=2.32.2->datasets>=2.16.0->lm-eval)
+  Downloading urllib3-2.6.2-py3-none-any.whl.metadata (6.6 kB)
+Collecting absl-py (from rouge-score>=0.0.4->lm-eval)
+  Downloading absl_py-2.3.1-py3-none-any.whl.metadata (3.3 kB)
+Collecting nltk (from rouge-score>=0.0.4->lm-eval)
+  Downloading nltk-3.9.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting portalocker (from sacrebleu>=1.5.0->lm-eval)
+  Downloading portalocker-3.2.0-py3-none-any.whl.metadata (8.7 kB)
+Collecting regex (from sacrebleu>=1.5.0->lm-eval)
+  Downloading regex-2025.11.3-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (40 kB)
+Collecting tabulate>=0.8.9 (from sacrebleu>=1.5.0->lm-eval)
+  Downloading tabulate-0.9.0-py3-none-any.whl.metadata (34 kB)
+Collecting colorama (from sacrebleu>=1.5.0->lm-eval)
+  Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting lxml (from sacrebleu>=1.5.0->lm-eval)
+  Downloading lxml-6.0.2-cp311-cp311-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl.metadata (3.6 kB)
+Collecting scipy>=1.10.0 (from scikit-learn>=0.24.1->lm-eval)
+  Downloading scipy-1.16.3-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.whl.metadata (62 kB)
+Collecting joblib>=1.3.0 (from scikit-learn>=0.24.1->lm-eval)
+  Downloading joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+Collecting threadpoolctl>=3.2.0 (from scikit-learn>=0.24.1->lm-eval)
+  Downloading threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Collecting sympy>=1.13.3 (from torch>=1.8->lm-eval)
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch>=1.8->lm-eval)
+  Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting jinja2 (from torch>=1.8->lm-eval)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch>=1.8->lm-eval)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting huggingface_hub>=0.21.0 (from accelerate>=0.26.0->lm-eval)
+  Downloading huggingface_hub-0.36.0-py3-none-any.whl.metadata (14 kB)
+Collecting tokenizers<=0.23.0,>=0.22.0 (from transformers>=4.1->lm-eval)
+  Downloading tokenizers-0.22.1-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (6.8 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch>=1.8->lm-eval)
+  Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.7 kB)
+Collecting click (from nltk->rouge-score>=0.0.4->lm-eval)
+  Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting python-dateutil>=2.8.2 (from pandas->datasets>=2.16.0->lm-eval)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas->datasets>=2.16.0->lm-eval)
+  Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas->datasets>=2.16.0->lm-eval)
+  Downloading tzdata-2025.3-py2.py3-none-any.whl.metadata (1.4 kB)
+Requirement already satisfied: setuptools>=38.3.0 in /usr/local/lib/python3.11/site-packages (from pytablewriter->lm-eval) (79.0.1)
+Collecting DataProperty<2,>=1.1.0 (from pytablewriter->lm-eval)
+  Downloading DataProperty-1.1.0-py3-none-any.whl.metadata (11 kB)
+Collecting mbstrdecoder<2,>=1.0.0 (from pytablewriter->lm-eval)
+  Downloading mbstrdecoder-1.1.4-py3-none-any.whl.metadata (4.3 kB)
+Collecting pathvalidate<4,>=2.3.0 (from pytablewriter->lm-eval)
+  Downloading pathvalidate-3.3.1-py3-none-any.whl.metadata (12 kB)
+Collecting tabledata<2,>=1.3.1 (from pytablewriter->lm-eval)
+  Downloading tabledata-1.3.4-py3-none-any.whl.metadata (3.7 kB)
+Collecting tcolorpy<1,>=0.0.5 (from pytablewriter->lm-eval)
+  Downloading tcolorpy-0.1.7-py3-none-any.whl.metadata (6.3 kB)
+Collecting typepy<2,>=1.3.2 (from typepy[datetime]<2,>=1.3.2->pytablewriter->lm-eval)
+  Downloading typepy-1.3.4-py3-none-any.whl.metadata (9.2 kB)
+Collecting chardet<6,>=3.0.4 (from mbstrdecoder<2,>=1.0.0->pytablewriter->lm-eval)
+  Downloading chardet-5.2.0-py3-none-any.whl.metadata (3.4 kB)
+Downloading lm_eval-0.4.9.2-py3-none-any.whl (8.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.2/8.2 MB 17.5 MB/s  0:00:00
+Downloading tenacity-9.1.2-py3-none-any.whl (28 kB)
+Downloading immutabledict-4.2.2-py3-none-any.whl (4.7 kB)
+Downloading accelerate-1.12.0-py3-none-any.whl (380 kB)
+Downloading datasets-4.4.2-py3-none-any.whl (512 kB)
+Downloading dill-0.4.0-py3-none-any.whl (119 kB)
+Downloading fsspec-2025.10.0-py3-none-any.whl (200 kB)
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading hf_xet-1.2.0-cp37-abi3-manylinux_2_28_aarch64.whl (3.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 16.8 MB/s  0:00:00
+Downloading multiprocess-0.70.18-py311-none-any.whl (144 kB)
+Downloading aiohttp-3.13.3-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 11.4 MB/s  0:00:00
+Downloading multidict-6.7.0-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (246 kB)
+Downloading yarl-1.22.0-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (368 kB)
+Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Downloading attrs-25.4.0-py3-none-any.whl (67 kB)
+Downloading evaluate-0.4.6-py3-none-any.whl (84 kB)
+Downloading frozenlist-1.8.0-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (233 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading idna-3.11-py3-none-any.whl (71 kB)
+Downloading numpy-2.4.0-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (14.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.7/14.7 MB 18.3 MB/s  0:00:00
+Downloading packaging-25.0-py3-none-any.whl (66 kB)
+Downloading peft-0.18.0-py3-none-any.whl (556 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 556.4/556.4 kB 13.4 MB/s  0:00:00
+Downloading propcache-0.4.1-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (214 kB)
+Downloading pyarrow-22.0.0-cp311-cp311-manylinux_2_28_aarch64.whl (45.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.0/45.0 MB 19.0 MB/s  0:00:02
+Downloading pybind11-3.0.1-py3-none-any.whl (293 kB)
+Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (775 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 775.6/775.6 kB 15.7 MB/s  0:00:00
+Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+Downloading charset_normalizer-3.4.4-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (147 kB)
+Downloading urllib3-2.6.2-py3-none-any.whl (131 kB)
+Downloading certifi-2025.11.12-py3-none-any.whl (159 kB)
+Downloading sacrebleu-2.5.1-py3-none-any.whl (104 kB)
+Downloading safetensors-0.7.0-cp38-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (491 kB)
+Downloading scikit_learn-1.8.0-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (8.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.8/8.8 MB 20.1 MB/s  0:00:00
+Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+Downloading scipy-1.16.3-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (33.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 33.6/33.6 MB 19.2 MB/s  0:00:01
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+Downloading threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Downloading torch-2.9.1-cp311-cp311-manylinux_2_28_aarch64.whl (104.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 104.2/104.2 MB 18.5 MB/s  0:00:05
+Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 15.5 MB/s  0:00:00
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 18.6 MB/s  0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 11.0 MB/s  0:00:00
+Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+Downloading transformers-4.57.3-py3-none-any.whl (12.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.0/12.0 MB 19.7 MB/s  0:00:00
+Downloading huggingface_hub-0.36.0-py3-none-any.whl (566 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.1/566.1 kB 10.6 MB/s  0:00:00
+Downloading tokenizers-0.22.1-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (3.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 13.1 MB/s  0:00:00
+Downloading regex-2025.11.3-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (793 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 793.4/793.4 kB 14.7 MB/s  0:00:00
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Downloading absl_py-2.3.1-py3-none-any.whl (135 kB)
+Downloading anyio-4.12.0-py3-none-any.whl (113 kB)
+Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Downloading filelock-3.20.2-py3-none-any.whl (16 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (24 kB)
+Downloading jsonlines-4.0.0-py3-none-any.whl (8.7 kB)
+Downloading lxml-6.0.2-cp311-cp311-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl (5.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.0/5.0 MB 9.0 MB/s  0:00:00
+Downloading more_itertools-10.8.0-py3-none-any.whl (69 kB)
+Downloading nltk-3.9.2-py3-none-any.whl (1.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 18.3 MB/s  0:00:00
+Downloading click-8.3.1-py3-none-any.whl (108 kB)
+Downloading numexpr-2.14.1-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (451 kB)
+Downloading pandas-2.3.3-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl (12.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 18.1 MB/s  0:00:00
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
+Downloading tzdata-2025.3-py2.py3-none-any.whl (348 kB)
+Downloading portalocker-3.2.0-py3-none-any.whl (22 kB)
+Downloading psutil-7.2.1-cp36-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (156 kB)
+Downloading pytablewriter-1.2.1-py3-none-any.whl (91 kB)
+Downloading DataProperty-1.1.0-py3-none-any.whl (27 kB)
+Downloading mbstrdecoder-1.1.4-py3-none-any.whl (7.9 kB)
+Downloading chardet-5.2.0-py3-none-any.whl (199 kB)
+Downloading pathvalidate-3.3.1-py3-none-any.whl (24 kB)
+Downloading tabledata-1.3.4-py3-none-any.whl (11 kB)
+Downloading tcolorpy-0.1.7-py3-none-any.whl (8.1 kB)
+Downloading typepy-1.3.4-py3-none-any.whl (31 kB)
+Downloading tqdm_multiprocess-0.0.11-py3-none-any.whl (9.8 kB)
+Downloading xxhash-3.6.0-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (213 kB)
+Downloading zstandard-0.25.0-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (5.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.1/5.1 MB 17.4 MB/s  0:00:00
+Building wheels for collected packages: langdetect, rouge-score, sqlitedict, word2number
+  Building wheel for langdetect (pyproject.toml): started
+  Building wheel for langdetect (pyproject.toml): finished with status 'done'
+  Created wheel for langdetect: filename=langdetect-1.0.9-py3-none-any.whl size=993332 sha256=56f2b27c0ff7d8683cd0b80dab10e9ec06bfdcbd13ddef7eeb25d3b3b1e37f63
+  Stored in directory: /root/.cache/pip/wheels/0a/f2/b2/e5ca405801e05eb7c8ed5b3b4bcf1fcabcd6272c167640072e
+  Building wheel for rouge-score (pyproject.toml): started
+  Building wheel for rouge-score (pyproject.toml): finished with status 'done'
+  Created wheel for rouge-score: filename=rouge_score-0.1.2-py3-none-any.whl size=24987 sha256=58e6ba9baa91236fb09ec01688bd2d4d77bfbe583b99e0839a44b819136b6e1c
+  Stored in directory: /root/.cache/pip/wheels/1e/19/43/8a442dc83660ca25e163e1bd1f89919284ab0d0c1475475148
+  Building wheel for sqlitedict (pyproject.toml): started
+  Building wheel for sqlitedict (pyproject.toml): finished with status 'done'
+  Created wheel for sqlitedict: filename=sqlitedict-2.1.0-py3-none-any.whl size=16957 sha256=fbd0b4742950cf88dc00823874ea21c505f564865c741d636f127660020b51f8
+  Stored in directory: /root/.cache/pip/wheels/73/63/89/7210274f9b7fb033b8f22671f64c0e0b55083d30c3c046a3ff
+  Building wheel for word2number (pyproject.toml): started
+  Building wheel for word2number (pyproject.toml): finished with status 'done'
+  Created wheel for word2number: filename=word2number-1.1-py3-none-any.whl size=5659 sha256=81648a5c3274760c18df387653b6f29a59538bed373fc760f14724c4d31f0443
+  Stored in directory: /root/.cache/pip/wheels/cd/ef/ae/073b491b14d25e2efafcffca9e16b2ee6d114ec5c643ba4f06
+Successfully built langdetect rouge-score sqlitedict word2number
+Installing collected packages: word2number, sqlitedict, pytz, mpmath, zstandard, xxhash, urllib3, tzdata, typing-extensions, tqdm, threadpoolctl, tenacity, tcolorpy, tabulate, sympy, six, safetensors, regex, pyyaml, pybind11, pyarrow, psutil, propcache, portalocker, pathvalidate, packaging, numpy, networkx, multidict, more_itertools, MarkupSafe, lxml, joblib, immutabledict, idna, hf-xet, h11, fsspec, frozenlist, filelock, dill, colorama, click, charset_normalizer, chardet, certifi, attrs, aiohappyeyeballs, absl-py, yarl, tqdm-multiprocess, scipy, sacrebleu, requests, python-dateutil, numexpr, nltk, multiprocess, mbstrdecoder, langdetect, jsonlines, jinja2, httpcore, anyio, aiosignal, typepy, torch, scikit-learn, rouge-score, pandas, huggingface_hub, httpx, aiohttp, tokenizers, accelerate, transformers, datasets, DataProperty, tabledata, peft, evaluate, pytablewriter, lm-eval
+
+Successfully installed DataProperty-1.1.0 MarkupSafe-3.0.3 absl-py-2.3.1 accelerate-1.12.0 aiohappyeyeballs-2.6.1 aiohttp-3.13.3 aiosignal-1.4.0 anyio-4.12.0 attrs-25.4.0 certifi-2025.11.12 chardet-5.2.0 charset_normalizer-3.4.4 click-8.3.1 colorama-0.4.6 datasets-4.4.2 dill-0.4.0 evaluate-0.4.6 filelock-3.20.2 frozenlist-1.8.0 fsspec-2025.10.0 h11-0.16.0 hf-xet-1.2.0 httpcore-1.0.9 httpx-0.28.1 huggingface_hub-0.36.0 idna-3.11 immutabledict-4.2.2 jinja2-3.1.6 joblib-1.5.3 jsonlines-4.0.0 langdetect-1.0.9 lm-eval-0.4.9.2 lxml-6.0.2 mbstrdecoder-1.1.4 more_itertools-10.8.0 mpmath-1.3.0 multidict-6.7.0 multiprocess-0.70.18 networkx-3.6.1 nltk-3.9.2 numexpr-2.14.1 numpy-2.4.0 packaging-25.0 pandas-2.3.3 pathvalidate-3.3.1 peft-0.18.0 portalocker-3.2.0 propcache-0.4.1 psutil-7.2.1 pyarrow-22.0.0 pybind11-3.0.1 pytablewriter-1.2.1 python-dateutil-2.9.0.post0 pytz-2025.2 pyyaml-6.0.3 regex-2025.11.3 requests-2.32.5 rouge-score-0.1.2 sacrebleu-2.5.1 safetensors-0.7.0 scikit-learn-1.8.0 scipy-1.16.3 six-1.17.0 sqlitedict-2.1.0 sympy-1.14.0 tabledata-1.3.4 tabulate-0.9.0 tcolorpy-0.1.7 tenacity-9.1.2 threadpoolctl-3.6.0 tokenizers-0.22.1 torch-2.9.1 tqdm-4.67.1 tqdm-multiprocess-0.0.11 transformers-4.57.3 typepy-1.3.4 typing-extensions-4.15.0 tzdata-2025.3 urllib3-2.6.2 word2number-1.1 xxhash-3.6.0 yarl-1.22.0 zstandard-0.25.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ lm_eval --model local-chat-completions --model_args base_url=http://qwen3-4b-instruct-vllm:8000/v1/chat/completions,model=qwen3-4b-instruct,num_concurrent=4 --tasks ifeval --apply_chat_template --batch_size 1 --seed 42
+2026-01-04:02:42:47 INFO     [__main__:465] Selected Tasks: ['ifeval']
+2026-01-04:02:42:47 INFO     [evaluator:202] Setting random seed to 42 | Setting numpy seed to 42 | Setting torch manual seed to 42 | Setting fewshot manual seed to 42
+2026-01-04:02:42:47 INFO     [evaluator:240] Initializing local-chat-completions model, with arguments: {'base_url': 'http://qwen3-4b-instruct-vllm:8000/v1/chat/completions', 'model':
+        'qwen3-4b-instruct', 'num_concurrent': 4}
+2026-01-04:02:42:47 INFO     [models.api_models:172] Using max length 2048 - 1
+2026-01-04:02:42:47 INFO     [models.api_models:193] Using tokenizer None
+[nltk_data] Downloading package punkt_tab to /root/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt_tab.zip.
+Downloaded punkt_tab on rank 0
+
+Generating train split:   0%|          | 0/541 [00:00<?, ? examples/s]
+Generating train split: 100%|██████████| 541/541 [00:00<00:00, 76724.21 examples/s]
+2026-01-04:02:42:49 INFO     [tasks:695] Selected tasks:
+2026-01-04:02:42:49 INFO     [tasks:686] Task: ifeval (ifeval/ifeval.yaml)
+2026-01-04:02:42:49 INFO     [evaluator:305] ifeval: Using gen_kwargs: {'until': [], 'do_sample': False, 'temperature': 0.0, 'max_gen_toks': 1280}
+2026-01-04:02:42:49 WARNING  [evaluator:480] Chat template formatting change affects loglikelihood and multiple-choice tasks. See docs/chat-template-readme.md for details.
+2026-01-04:02:42:49 INFO     [api.task:434] Building contexts for ifeval on rank 0...
+
+  0%|          | 0/541 [00:00<?, ?it/s]
+100%|██████████| 541/541 [00:00<00:00, 147883.11it/s]
+2026-01-04:02:42:49 INFO     [evaluator:574] Running generate_until requests
+2026-01-04:02:42:49 INFO     [models.api_models:733] Tokenized requests are disabled. Context + generation length is not checked.
+
+Requesting API:   0%|          | 0/541 [00:00<?, ?it/s]
+Requesting API:   0%|          | 1/541 [00:10<1:34:21, 10.49s/it]
+Requesting API:   0%|          | 2/541 [00:10<40:49,  4.54s/it]  
+Requesting API:   1%|          | 3/541 [00:10<22:35,  2.52s/it]
+Requesting API:   1%|          | 4/541 [00:15<30:00,  3.35s/it]
+Requesting API:   1%|          | 5/541 [00:16<20:57,  2.35s/it]
+Requesting API:   1%|          | 6/541 [00:22<33:31,  3.76s/it]
+Requesting API:   1%|▏         | 7/541 [00:24<26:57,  3.03s/it]
+Requesting API:   1%|▏         | 8/541 [00:24<19:20,  2.18s/it]
+Requesting API:   2%|▏         | 10/541 [00:37<37:54,  4.28s/it]
+Requesting API:   2%|▏         | 11/541 [00:38<29:29,  3.34s/it]
+Requesting API:   2%|▏         | 12/541 [00:44<36:00,  4.08s/it]
+Requesting API:   2%|▏         | 13/541 [00:48<35:51,  4.07s/it]
+Requesting API:   3%|▎         | 14/541 [00:48<26:38,  3.03s/it]
+Requesting API:   3%|▎         | 15/541 [00:50<21:53,  2.50s/it]
+Requesting API:   3%|▎         | 16/541 [00:51<19:21,  2.21s/it]
+Requesting API:   3%|▎         | 17/541 [00:51<14:43,  1.69s/it]
+Requesting API:   3%|▎         | 18/541 [00:52<12:39,  1.45s/it]
+Requesting API:   4%|▎         | 19/541 [00:56<18:33,  2.13s/it]
+Requesting API:   4%|▎         | 20/541 [00:56<13:44,  1.58s/it]
+Requesting API:   4%|▍         | 21/541 [01:00<19:59,  2.31s/it]
+Requesting API:   4%|▍         | 22/541 [01:04<22:17,  2.58s/it]
+Requesting API:   4%|▍         | 23/541 [01:04<17:22,  2.01s/it]
+Requesting API:   4%|▍         | 24/541 [01:10<26:15,  3.05s/it]
+Requesting API:   5%|▍         | 26/541 [01:11<17:21,  2.02s/it]
+Requesting API:   5%|▍         | 27/541 [01:12<13:24,  1.57s/it]
+Requesting API:   5%|▌         | 28/541 [01:13<12:02,  1.41s/it]
+Requesting API:   5%|▌         | 29/541 [01:14<12:29,  1.46s/it]
+Requesting API:   6%|▌         | 30/541 [01:15<11:59,  1.41s/it]
+Requesting API:   6%|▌         | 31/541 [01:17<12:03,  1.42s/it]
+Requesting API:   6%|▌         | 32/541 [01:19<14:49,  1.75s/it]
+Requesting API:   6%|▌         | 33/541 [01:20<12:27,  1.47s/it]
+Requesting API:   6%|▋         | 34/541 [01:22<12:18,  1.46s/it]
+Requesting API:   6%|▋         | 35/541 [01:27<21:18,  2.53s/it]
+Requesting API:   7%|▋         | 36/541 [01:32<28:07,  3.34s/it]
+Requesting API:   7%|▋         | 37/541 [01:43<48:24,  5.76s/it]
+Requesting API:   7%|▋         | 38/541 [01:48<45:28,  5.42s/it]
+Requesting API:   7%|▋         | 39/541 [01:57<54:52,  6.56s/it]
+Requesting API:   7%|▋         | 40/541 [01:58<40:18,  4.83s/it]
+Requesting API:   8%|▊         | 41/541 [02:03<39:56,  4.79s/it]
+Requesting API:   8%|▊         | 42/541 [02:04<30:20,  3.65s/it]
+Requesting API:   8%|▊         | 43/541 [02:04<22:14,  2.68s/it]
+Requesting API:   8%|▊         | 44/541 [02:09<27:34,  3.33s/it]
+Requesting API:   8%|▊         | 45/541 [02:11<24:44,  2.99s/it]
+Requesting API:   9%|▊         | 46/541 [02:13<21:11,  2.57s/it]
+Requesting API:   9%|▊         | 47/541 [02:20<31:37,  3.84s/it]
+Requesting API:   9%|▉         | 48/541 [02:21<26:30,  3.23s/it]
+Requesting API:   9%|▉         | 49/541 [02:24<25:49,  3.15s/it]
+Requesting API:   9%|▉         | 50/541 [02:25<18:39,  2.28s/it]
+Requesting API:   9%|▉         | 51/541 [02:29<22:50,  2.80s/it]
+Requesting API:  10%|▉         | 52/541 [02:32<23:52,  2.93s/it]
+Requesting API:  10%|▉         | 53/541 [02:37<28:21,  3.49s/it]
+Requesting API:  10%|▉         | 54/541 [02:46<42:44,  5.27s/it]
+Requesting API:  10%|█         | 55/541 [02:50<38:47,  4.79s/it]
+Requesting API:  10%|█         | 56/541 [02:51<29:14,  3.62s/it]
+Requesting API:  11%|█         | 57/541 [02:55<31:50,  3.95s/it]
+Requesting API:  11%|█         | 58/541 [02:57<27:04,  3.36s/it]
+Requesting API:  11%|█         | 59/541 [02:59<23:33,  2.93s/it]
+Requesting API:  11%|█         | 60/541 [03:05<28:56,  3.61s/it]
+Requesting API:  11%|█▏        | 61/541 [03:09<31:53,  3.99s/it]
+Requesting API:  11%|█▏        | 62/541 [03:18<42:21,  5.31s/it]
+Requesting API:  12%|█▏        | 63/541 [03:23<40:55,  5.14s/it]
+Requesting API:  12%|█▏        | 64/541 [03:28<42:07,  5.30s/it]
+Requesting API:  12%|█▏        | 65/541 [03:32<38:22,  4.84s/it]
+Requesting API:  12%|█▏        | 66/541 [03:35<33:28,  4.23s/it]
+Requesting API:  12%|█▏        | 67/541 [03:39<32:27,  4.11s/it]
+Requesting API:  13%|█▎        | 68/541 [03:40<26:10,  3.32s/it]
+Requesting API:  13%|█▎        | 69/541 [03:43<24:38,  3.13s/it]
+Requesting API:  13%|█▎        | 70/541 [03:48<30:41,  3.91s/it]
+Requesting API:  13%|█▎        | 71/541 [03:53<31:14,  3.99s/it]
+Requesting API:  13%|█▎        | 72/541 [03:58<33:39,  4.31s/it]
+Requesting API:  13%|█▎        | 73/541 [04:04<37:24,  4.80s/it]
+Requesting API:  14%|█▎        | 74/541 [04:06<31:52,  4.10s/it]
+Requesting API:  14%|█▍        | 75/541 [04:20<54:01,  6.96s/it]
+Requesting API:  14%|█▍        | 76/541 [04:23<44:21,  5.72s/it]
+Requesting API:  14%|█▍        | 77/541 [04:23<32:48,  4.24s/it]
+Requesting API:  14%|█▍        | 78/541 [04:29<36:42,  4.76s/it]
+Requesting API:  15%|█▍        | 79/541 [04:31<28:24,  3.69s/it]
+Requesting API:  15%|█▍        | 80/541 [04:36<31:51,  4.15s/it]
+Requesting API:  15%|█▍        | 81/541 [04:37<24:41,  3.22s/it]
+Requesting API:  15%|█▌        | 82/541 [04:37<17:34,  2.30s/it]
+Requesting API:  15%|█▌        | 83/541 [04:49<39:15,  5.14s/it]
+Requesting API:  16%|█▌        | 84/541 [04:50<30:08,  3.96s/it]
+Requesting API:  16%|█▌        | 85/541 [04:53<29:12,  3.84s/it]
+Requesting API:  16%|█▌        | 86/541 [04:54<21:17,  2.81s/it]
+Requesting API:  16%|█▌        | 87/541 [04:59<26:58,  3.57s/it]
+Requesting API:  16%|█▋        | 88/541 [05:01<23:22,  3.10s/it]
+Requesting API:  16%|█▋        | 89/541 [05:02<17:52,  2.37s/it]
+Requesting API:  17%|█▋        | 90/541 [05:15<41:11,  5.48s/it]
+Requesting API:  17%|█▋        | 91/541 [05:16<32:29,  4.33s/it]
+Requesting API:  17%|█▋        | 92/541 [05:17<23:48,  3.18s/it]
+Requesting API:  17%|█▋        | 93/541 [05:23<30:19,  4.06s/it]
+Requesting API:  17%|█▋        | 94/541 [05:30<36:37,  4.92s/it]
+Requesting API:  18%|█▊        | 95/541 [05:33<32:26,  4.37s/it]
+Requesting API:  18%|█▊        | 96/541 [05:43<44:26,  5.99s/it]
+Requesting API:  18%|█▊        | 97/541 [05:48<41:53,  5.66s/it]
+Requesting API:  18%|█▊        | 98/541 [05:56<47:41,  6.46s/it]
+Requesting API:  18%|█▊        | 99/541 [05:58<37:58,  5.15s/it]
+Requesting API:  18%|█▊        | 100/541 [06:00<30:48,  4.19s/it]
+Requesting API:  19%|█▊        | 101/541 [06:01<24:51,  3.39s/it]
+Requesting API:  19%|█▉        | 102/541 [06:09<34:02,  4.65s/it]
+Requesting API:  19%|█▉        | 103/541 [06:10<26:33,  3.64s/it]
+Requesting API:  19%|█▉        | 104/541 [06:13<23:59,  3.29s/it]
+Requesting API:  19%|█▉        | 105/541 [06:15<22:25,  3.09s/it]
+Requesting API:  20%|█▉        | 106/541 [06:18<20:34,  2.84s/it]
+Requesting API:  20%|█▉        | 107/541 [06:20<18:48,  2.60s/it]
+Requesting API:  20%|█▉        | 108/541 [06:30<34:23,  4.77s/it]
+Requesting API:  20%|██        | 109/541 [06:30<25:20,  3.52s/it]
+Requesting API:  20%|██        | 110/541 [06:34<25:05,  3.49s/it]
+Requesting API:  21%|██        | 111/541 [06:39<30:00,  4.19s/it]
+Requesting API:  21%|██        | 112/541 [06:43<29:39,  4.15s/it]
+Requesting API:  21%|██        | 113/541 [06:45<23:26,  3.29s/it]
+Requesting API:  21%|██        | 114/541 [06:46<19:14,  2.70s/it]
+Requesting API:  21%|██▏       | 115/541 [06:47<14:28,  2.04s/it]
+Requesting API:  21%|██▏       | 116/541 [06:49<15:25,  2.18s/it]
+Requesting API:  22%|██▏       | 117/541 [06:51<14:29,  2.05s/it]
+Requesting API:  22%|██▏       | 118/541 [06:52<11:47,  1.67s/it]
+Requesting API:  22%|██▏       | 119/541 [06:52<09:11,  1.31s/it]
+Requesting API:  22%|██▏       | 120/541 [06:53<08:21,  1.19s/it]
+Requesting API:  22%|██▏       | 121/541 [07:04<29:59,  4.28s/it]
+Requesting API:  23%|██▎       | 122/541 [07:05<21:15,  3.04s/it]
+Requesting API:  23%|██▎       | 123/541 [07:11<28:28,  4.09s/it]
+Requesting API:  23%|██▎       | 124/541 [07:16<29:04,  4.18s/it]
+Requesting API:  23%|██▎       | 125/541 [07:25<40:28,  5.84s/it]
+Requesting API:  23%|██▎       | 127/541 [07:28<25:25,  3.69s/it]
+Requesting API:  24%|██▎       | 128/541 [07:31<24:47,  3.60s/it]
+Requesting API:  24%|██▍       | 129/541 [07:34<22:59,  3.35s/it]
+Requesting API:  24%|██▍       | 130/541 [07:48<43:42,  6.38s/it]
+Requesting API:  24%|██▍       | 131/541 [07:48<31:53,  4.67s/it]
+Requesting API:  24%|██▍       | 132/541 [07:49<24:30,  3.59s/it]
+Requesting API:  25%|██▍       | 133/541 [07:59<37:03,  5.45s/it]
+Requesting API:  25%|██▍       | 134/541 [08:02<30:53,  4.55s/it]
+Requesting API:  25%|██▍       | 135/541 [08:02<22:47,  3.37s/it]
+Requesting API:  25%|██▌       | 136/541 [08:10<31:41,  4.70s/it]
+Requesting API:  25%|██▌       | 137/541 [08:18<37:29,  5.57s/it]
+Requesting API:  26%|██▌       | 138/541 [08:19<28:22,  4.22s/it]
+Requesting API:  26%|██▌       | 139/541 [08:21<23:45,  3.55s/it]
+Requesting API:  26%|██▌       | 140/541 [08:23<21:13,  3.18s/it]
+Requesting API:  26%|██▌       | 141/541 [08:38<43:55,  6.59s/it]
+Requesting API:  26%|██▌       | 142/541 [08:42<38:48,  5.84s/it]
+Requesting API:  26%|██▋       | 143/541 [08:44<31:38,  4.77s/it]
+Requesting API:  27%|██▋       | 144/541 [08:45<23:21,  3.53s/it]
+Requesting API:  27%|██▋       | 145/541 [09:00<45:58,  6.97s/it]
+Requesting API:  27%|██▋       | 146/541 [09:12<57:30,  8.74s/it]
+Requesting API:  27%|██▋       | 147/541 [09:23<1:01:13,  9.32s/it]
+Requesting API:  27%|██▋       | 148/541 [09:23<42:58,  6.56s/it]  
+Requesting API:  28%|██▊       | 149/541 [09:28<39:29,  6.05s/it]
+Requesting API:  28%|██▊       | 150/541 [09:29<29:41,  4.56s/it]
+Requesting API:  28%|██▊       | 151/541 [09:30<21:55,  3.37s/it]
+Requesting API:  28%|██▊       | 153/541 [09:38<24:25,  3.78s/it]
+Requesting API:  28%|██▊       | 154/541 [09:45<29:37,  4.59s/it]
+Requesting API:  29%|██▊       | 155/541 [09:46<22:18,  3.47s/it]
+Requesting API:  29%|██▉       | 156/541 [09:49<22:07,  3.45s/it]
+Requesting API:  29%|██▉       | 157/541 [09:51<20:17,  3.17s/it]
+Requesting API:  29%|██▉       | 158/541 [09:54<18:26,  2.89s/it]
+Requesting API:  29%|██▉       | 159/541 [10:01<26:09,  4.11s/it]
+Requesting API:  30%|██▉       | 160/541 [10:07<30:48,  4.85s/it]
+Requesting API:  30%|██▉       | 161/541 [10:13<32:09,  5.08s/it]
+Requesting API:  30%|██▉       | 162/541 [10:14<24:22,  3.86s/it]
+Requesting API:  30%|███       | 163/541 [10:15<19:02,  3.02s/it]
+Requesting API:  30%|███       | 164/541 [10:23<29:14,  4.66s/it]
+Requesting API:  30%|███       | 165/541 [10:25<24:06,  3.85s/it]
+Requesting API:  31%|███       | 166/541 [10:30<26:09,  4.18s/it]
+Requesting API:  31%|███       | 167/541 [10:33<22:28,  3.61s/it]
+Requesting API:  31%|███       | 168/541 [10:37<23:32,  3.79s/it]
+Requesting API:  31%|███       | 169/541 [10:45<32:09,  5.19s/it]
+Requesting API:  31%|███▏      | 170/541 [10:46<23:27,  3.80s/it]
+Requesting API:  32%|███▏      | 171/541 [10:54<31:54,  5.18s/it]
+Requesting API:  32%|███▏      | 172/541 [10:55<24:14,  3.94s/it]
+Requesting API:  32%|███▏      | 173/541 [10:59<23:40,  3.86s/it]
+Requesting API:  32%|███▏      | 174/541 [11:00<18:18,  2.99s/it]
+Requesting API:  33%|███▎      | 176/541 [11:08<21:43,  3.57s/it]
+Requesting API:  33%|███▎      | 177/541 [11:09<17:18,  2.85s/it]
+Requesting API:  33%|███▎      | 178/541 [11:09<13:08,  2.17s/it]
+Requesting API:  33%|███▎      | 179/541 [11:11<12:22,  2.05s/it]
+Requesting API:  33%|███▎      | 180/541 [11:14<13:01,  2.16s/it]
+Requesting API:  33%|███▎      | 181/541 [11:18<16:29,  2.75s/it]
+Requesting API:  34%|███▎      | 182/541 [11:26<25:45,  4.30s/it]
+Requesting API:  34%|███▍      | 183/541 [11:26<19:08,  3.21s/it]
+Requesting API:  34%|███▍      | 184/541 [11:27<13:39,  2.30s/it]
+Requesting API:  34%|███▍      | 185/541 [11:27<10:47,  1.82s/it]
+Requesting API:  34%|███▍      | 186/541 [11:27<07:51,  1.33s/it]
+Requesting API:  35%|███▍      | 187/541 [11:32<13:15,  2.25s/it]
+Requesting API:  35%|███▍      | 188/541 [11:34<12:53,  2.19s/it]
+Requesting API:  35%|███▍      | 189/541 [11:36<12:08,  2.07s/it]
+Requesting API:  35%|███▌      | 190/541 [11:37<11:11,  1.91s/it]
+Requesting API:  35%|███▌      | 191/541 [11:38<09:37,  1.65s/it]
+Requesting API:  35%|███▌      | 192/541 [11:38<07:05,  1.22s/it]
+Requesting API:  36%|███▌      | 193/541 [11:42<10:35,  1.82s/it]
+Requesting API:  36%|███▌      | 194/541 [11:43<09:57,  1.72s/it]
+Requesting API:  36%|███▌      | 195/541 [11:47<13:13,  2.29s/it]
+Requesting API:  36%|███▌      | 196/541 [11:50<14:45,  2.57s/it]
+Requesting API:  36%|███▋      | 197/541 [11:50<11:01,  1.92s/it]
+Requesting API:  37%|███▋      | 198/541 [11:55<16:06,  2.82s/it]
+Requesting API:  37%|███▋      | 199/541 [12:02<22:20,  3.92s/it]
+Requesting API:  37%|███▋      | 200/541 [12:05<21:22,  3.76s/it]
+Requesting API:  37%|███▋      | 202/541 [12:08<15:19,  2.71s/it]
+Requesting API:  38%|███▊      | 203/541 [12:10<13:56,  2.48s/it]
+Requesting API:  38%|███▊      | 204/541 [12:15<18:06,  3.22s/it]
+Requesting API:  38%|███▊      | 205/541 [12:18<17:45,  3.17s/it]
+Requesting API:  38%|███▊      | 206/541 [12:22<17:52,  3.20s/it]
+Requesting API:  38%|███▊      | 207/541 [12:22<13:01,  2.34s/it]
+Requesting API:  38%|███▊      | 208/541 [12:22<10:13,  1.84s/it]
+Requesting API:  39%|███▊      | 209/541 [12:28<16:28,  2.98s/it]
+Requesting API:  39%|███▉      | 210/541 [12:33<18:47,  3.41s/it]
+Requesting API:  39%|███▉      | 211/541 [12:33<14:22,  2.61s/it]
+Requesting API:  39%|███▉      | 212/541 [12:38<16:53,  3.08s/it]
+Requesting API:  39%|███▉      | 213/541 [12:39<14:59,  2.74s/it]
+Requesting API:  40%|███▉      | 214/541 [12:40<11:38,  2.14s/it]
+Requesting API:  40%|███▉      | 215/541 [12:41<09:26,  1.74s/it]
+Requesting API:  40%|███▉      | 216/541 [12:46<14:44,  2.72s/it]
+Requesting API:  40%|████      | 217/541 [12:51<17:41,  3.28s/it]
+Requesting API:  40%|████      | 218/541 [12:53<16:37,  3.09s/it]
+Requesting API:  40%|████      | 219/541 [13:00<22:32,  4.20s/it]
+Requesting API:  41%|████      | 220/541 [13:06<25:45,  4.81s/it]
+Requesting API:  41%|████      | 221/541 [13:09<21:56,  4.11s/it]
+Requesting API:  41%|████      | 222/541 [13:09<15:56,  3.00s/it]
+Requesting API:  41%|████      | 223/541 [13:11<14:45,  2.78s/it]
+Requesting API:  41%|████▏     | 224/541 [13:12<10:32,  1.99s/it]
+Requesting API:  42%|████▏     | 225/541 [13:12<07:31,  1.43s/it]
+Requesting API:  42%|████▏     | 226/541 [13:17<13:51,  2.64s/it]
+Requesting API:  42%|████▏     | 227/541 [13:31<31:38,  6.05s/it]
+Requesting API:  42%|████▏     | 228/541 [13:32<23:11,  4.44s/it]
+Requesting API:  42%|████▏     | 229/541 [13:32<17:06,  3.29s/it]
+Requesting API:  43%|████▎     | 230/541 [13:36<18:00,  3.47s/it]
+Requesting API:  43%|████▎     | 231/541 [13:40<18:50,  3.65s/it]
+Requesting API:  43%|████▎     | 232/541 [13:41<13:32,  2.63s/it]
+Requesting API:  43%|████▎     | 233/541 [13:41<09:37,  1.87s/it]
+Requesting API:  43%|████▎     | 234/541 [13:49<19:42,  3.85s/it]
+Requesting API:  43%|████▎     | 235/541 [13:51<15:47,  3.10s/it]
+Requesting API:  44%|████▎     | 236/541 [14:06<34:11,  6.72s/it]
+Requesting API:  44%|████▍     | 237/541 [14:09<28:21,  5.60s/it]
+Requesting API:  44%|████▍     | 238/541 [14:23<40:42,  8.06s/it]
+Requesting API:  44%|████▍     | 239/541 [14:25<32:28,  6.45s/it]
+Requesting API:  44%|████▍     | 240/541 [14:26<23:31,  4.69s/it]
+Requesting API:  45%|████▍     | 241/541 [14:26<16:35,  3.32s/it]
+Requesting API:  45%|████▍     | 242/541 [14:26<12:02,  2.42s/it]
+Requesting API:  45%|████▍     | 243/541 [14:27<08:58,  1.81s/it]
+Requesting API:  45%|████▌     | 244/541 [14:27<06:40,  1.35s/it]
+Requesting API:  45%|████▌     | 245/541 [14:29<07:22,  1.50s/it]
+Requesting API:  45%|████▌     | 246/541 [14:29<05:57,  1.21s/it]
+Requesting API:  46%|████▌     | 247/541 [14:34<11:43,  2.39s/it]
+Requesting API:  46%|████▌     | 248/541 [14:36<10:21,  2.12s/it]
+Requesting API:  46%|████▌     | 249/541 [14:38<10:34,  2.17s/it]
+Requesting API:  46%|████▌     | 250/541 [14:44<15:52,  3.27s/it]
+Requesting API:  46%|████▋     | 251/541 [14:45<12:41,  2.62s/it]
+Requesting API:  47%|████▋     | 252/541 [14:46<09:45,  2.03s/it]
+Requesting API:  47%|████▋     | 253/541 [14:49<11:00,  2.29s/it]
+Requesting API:  47%|████▋     | 254/541 [14:51<10:50,  2.27s/it]
+Requesting API:  47%|████▋     | 255/541 [14:53<10:36,  2.23s/it]
+Requesting API:  47%|████▋     | 256/541 [14:56<10:55,  2.30s/it]
+Requesting API:  48%|████▊     | 257/541 [14:56<08:39,  1.83s/it]
+Requesting API:  48%|████▊     | 258/541 [14:59<09:20,  1.98s/it]
+Requesting API:  48%|████▊     | 259/541 [15:03<12:36,  2.68s/it]
+Requesting API:  48%|████▊     | 260/541 [15:09<17:53,  3.82s/it]
+Requesting API:  48%|████▊     | 261/541 [15:14<18:35,  3.99s/it]
+Requesting API:  48%|████▊     | 262/541 [15:15<14:57,  3.22s/it]
+Requesting API:  49%|████▊     | 263/541 [15:19<15:07,  3.27s/it]
+Requesting API:  49%|████▉     | 264/541 [15:19<11:39,  2.53s/it]
+Requesting API:  49%|████▉     | 265/541 [15:21<11:02,  2.40s/it]
+Requesting API:  49%|████▉     | 266/541 [15:26<14:00,  3.06s/it]
+Requesting API:  49%|████▉     | 267/541 [15:30<15:24,  3.37s/it]
+Requesting API:  50%|████▉     | 268/541 [15:31<11:27,  2.52s/it]
+Requesting API:  50%|████▉     | 269/541 [15:33<11:28,  2.53s/it]
+Requesting API:  50%|████▉     | 270/541 [15:36<11:19,  2.51s/it]
+Requesting API:  50%|█████     | 271/541 [15:41<14:48,  3.29s/it]
+Requesting API:  50%|█████     | 272/541 [15:41<10:31,  2.35s/it]
+Requesting API:  50%|█████     | 273/541 [15:43<09:35,  2.15s/it]
+Requesting API:  51%|█████     | 274/541 [15:43<06:58,  1.57s/it]
+Requesting API:  51%|█████     | 275/541 [15:49<12:36,  2.84s/it]
+Requesting API:  51%|█████     | 276/541 [15:49<09:26,  2.14s/it]
+Requesting API:  51%|█████     | 277/541 [15:49<06:49,  1.55s/it]
+Requesting API:  51%|█████▏    | 278/541 [15:50<05:57,  1.36s/it]
+Requesting API:  52%|█████▏    | 279/541 [15:51<05:40,  1.30s/it]
+Requesting API:  52%|█████▏    | 280/541 [15:52<04:42,  1.08s/it]
+Requesting API:  52%|█████▏    | 281/541 [15:52<03:41,  1.17it/s]
+Requesting API:  52%|█████▏    | 282/541 [16:06<19:46,  4.58s/it]
+Requesting API:  52%|█████▏    | 283/541 [16:06<14:28,  3.36s/it]
+Requesting API:  52%|█████▏    | 284/541 [16:11<16:37,  3.88s/it]
+Requesting API:  53%|█████▎    | 285/541 [16:12<12:29,  2.93s/it]
+Requesting API:  53%|█████▎    | 287/541 [16:15<10:07,  2.39s/it]
+Requesting API:  53%|█████▎    | 288/541 [16:18<10:05,  2.39s/it]
+Requesting API:  53%|█████▎    | 289/541 [16:19<08:59,  2.14s/it]
+Requesting API:  54%|█████▎    | 290/541 [16:20<07:17,  1.74s/it]
+Requesting API:  54%|█████▍    | 291/541 [16:20<05:21,  1.29s/it]
+Requesting API:  54%|█████▍    | 292/541 [16:23<07:14,  1.74s/it]
+Requesting API:  54%|█████▍    | 293/541 [16:24<06:40,  1.61s/it]
+Requesting API:  54%|█████▍    | 294/541 [16:30<11:08,  2.71s/it]
+Requesting API:  55%|█████▍    | 295/541 [16:31<09:27,  2.31s/it]
+Requesting API:  55%|█████▍    | 296/541 [16:34<10:12,  2.50s/it]
+Requesting API:  55%|█████▍    | 297/541 [16:37<10:44,  2.64s/it]
+Requesting API:  55%|█████▌    | 298/541 [16:40<11:50,  2.92s/it]
+Requesting API:  55%|█████▌    | 299/541 [16:41<08:31,  2.11s/it]
+Requesting API:  55%|█████▌    | 300/541 [16:42<07:40,  1.91s/it]
+Requesting API:  56%|█████▌    | 301/541 [16:43<06:50,  1.71s/it]
+Requesting API:  56%|█████▌    | 302/541 [16:48<10:15,  2.57s/it]
+Requesting API:  56%|█████▌    | 303/541 [16:57<18:25,  4.65s/it]
+Requesting API:  56%|█████▌    | 304/541 [16:59<14:08,  3.58s/it]
+Requesting API:  56%|█████▋    | 305/541 [17:01<12:15,  3.12s/it]
+Requesting API:  57%|█████▋    | 306/541 [17:01<09:27,  2.41s/it]
+Requesting API:  57%|█████▋    | 307/541 [17:03<08:01,  2.06s/it]
+Requesting API:  57%|█████▋    | 308/541 [17:03<06:12,  1.60s/it]
+Requesting API:  57%|█████▋    | 309/541 [17:05<06:15,  1.62s/it]
+Requesting API:  57%|█████▋    | 310/541 [17:08<07:35,  1.97s/it]
+Requesting API:  57%|█████▋    | 311/541 [17:10<07:43,  2.02s/it]
+Requesting API:  58%|█████▊    | 312/541 [17:13<09:23,  2.46s/it]
+Requesting API:  58%|█████▊    | 313/541 [17:14<07:52,  2.07s/it]
+Requesting API:  58%|█████▊    | 314/541 [17:16<06:52,  1.82s/it]
+Requesting API:  58%|█████▊    | 315/541 [17:17<06:11,  1.64s/it]
+Requesting API:  58%|█████▊    | 316/541 [17:18<06:06,  1.63s/it]
+Requesting API:  59%|█████▊    | 317/541 [17:20<05:54,  1.58s/it]
+Requesting API:  59%|█████▉    | 318/541 [17:22<05:59,  1.61s/it]
+Requesting API:  59%|█████▉    | 319/541 [17:22<04:24,  1.19s/it]
+Requesting API:  59%|█████▉    | 320/541 [17:27<08:42,  2.36s/it]
+Requesting API:  59%|█████▉    | 321/541 [17:29<07:58,  2.17s/it]
+Requesting API:  60%|█████▉    | 322/541 [17:30<07:27,  2.04s/it]
+Requesting API:  60%|█████▉    | 323/541 [17:33<08:37,  2.38s/it]
+Requesting API:  60%|█████▉    | 324/541 [17:40<12:45,  3.53s/it]
+Requesting API:  60%|██████    | 325/541 [17:40<09:42,  2.69s/it]
+Requesting API:  60%|██████    | 326/541 [17:51<18:23,  5.13s/it]
+Requesting API:  60%|██████    | 327/541 [17:54<16:00,  4.49s/it]
+Requesting API:  61%|██████    | 328/541 [17:55<12:28,  3.51s/it]
+Requesting API:  61%|██████    | 329/541 [17:58<10:49,  3.06s/it]
+Requesting API:  61%|██████    | 330/541 [18:05<14:55,  4.25s/it]
+Requesting API:  61%|██████    | 331/541 [18:07<12:35,  3.60s/it]
+Requesting API:  61%|██████▏   | 332/541 [18:08<10:14,  2.94s/it]
+Requesting API:  62%|██████▏   | 333/541 [18:17<16:03,  4.63s/it]
+Requesting API:  62%|██████▏   | 334/541 [18:18<12:54,  3.74s/it]
+Requesting API:  62%|██████▏   | 335/541 [18:25<15:44,  4.59s/it]
+Requesting API:  62%|██████▏   | 336/541 [18:26<12:36,  3.69s/it]
+Requesting API:  62%|██████▏   | 337/541 [18:27<09:01,  2.66s/it]
+Requesting API:  62%|██████▏   | 338/541 [18:27<06:42,  1.98s/it]
+Requesting API:  63%|██████▎   | 339/541 [18:29<06:26,  1.91s/it]
+Requesting API:  63%|██████▎   | 341/541 [18:31<05:14,  1.57s/it]
+Requesting API:  63%|██████▎   | 342/541 [18:33<05:41,  1.72s/it]
+Requesting API:  63%|██████▎   | 343/541 [18:34<04:43,  1.43s/it]
+Requesting API:  64%|██████▎   | 344/541 [18:35<04:29,  1.37s/it]
+Requesting API:  64%|██████▍   | 345/541 [18:46<12:59,  3.98s/it]
+Requesting API:  64%|██████▍   | 346/541 [18:47<10:35,  3.26s/it]
+Requesting API:  64%|██████▍   | 347/541 [18:53<12:32,  3.88s/it]
+Requesting API:  64%|██████▍   | 348/541 [18:55<11:12,  3.49s/it]
+Requesting API:  65%|██████▍   | 349/541 [18:56<08:38,  2.70s/it]
+Requesting API:  65%|██████▍   | 350/541 [18:57<06:46,  2.13s/it]
+Requesting API:  65%|██████▍   | 351/541 [19:01<08:22,  2.64s/it]
+Requesting API:  65%|██████▌   | 352/541 [19:01<06:21,  2.02s/it]
+Requesting API:  65%|██████▌   | 353/541 [19:02<05:09,  1.64s/it]
+Requesting API:  65%|██████▌   | 354/541 [19:04<05:48,  1.87s/it]
+Requesting API:  66%|██████▌   | 355/541 [19:10<09:39,  3.11s/it]
+Requesting API:  66%|██████▌   | 356/541 [19:13<08:45,  2.84s/it]
+Requesting API:  66%|██████▌   | 357/541 [19:14<07:14,  2.36s/it]
+Requesting API:  66%|██████▌   | 358/541 [19:15<06:21,  2.09s/it]
+Requesting API:  66%|██████▋   | 359/541 [19:16<04:54,  1.62s/it]
+Requesting API:  67%|██████▋   | 360/541 [19:20<07:37,  2.53s/it]
+Requesting API:  67%|██████▋   | 361/541 [19:35<18:02,  6.01s/it]
+Requesting API:  67%|██████▋   | 362/541 [19:35<13:05,  4.39s/it]
+Requesting API:  67%|██████▋   | 363/541 [19:39<12:16,  4.14s/it]
+Requesting API:  67%|██████▋   | 364/541 [19:40<09:45,  3.31s/it]
+Requesting API:  67%|██████▋   | 365/541 [19:41<07:19,  2.50s/it]
+Requesting API:  68%|██████▊   | 366/541 [19:47<10:21,  3.55s/it]
+Requesting API:  68%|██████▊   | 367/541 [19:48<08:20,  2.88s/it]
+Requesting API:  68%|██████▊   | 368/541 [19:57<13:55,  4.83s/it]
+Requesting API:  68%|██████▊   | 369/541 [20:05<16:09,  5.64s/it]
+Requesting API:  68%|██████▊   | 370/541 [20:09<15:01,  5.27s/it]
+Requesting API:  69%|██████▊   | 371/541 [20:16<15:42,  5.55s/it]
+Requesting API:  69%|██████▉   | 372/541 [20:24<18:16,  6.49s/it]
+Requesting API:  69%|██████▉   | 373/541 [20:25<13:10,  4.70s/it]
+Requesting API:  69%|██████▉   | 374/541 [20:29<12:28,  4.48s/it]
+Requesting API:  69%|██████▉   | 375/541 [20:33<12:03,  4.36s/it]
+Requesting API:  70%|██████▉   | 376/541 [20:42<15:43,  5.72s/it]
+Requesting API:  70%|██████▉   | 377/541 [20:44<12:50,  4.70s/it]
+Requesting API:  70%|██████▉   | 378/541 [20:46<10:10,  3.75s/it]
+Requesting API:  70%|███████   | 379/541 [20:50<10:39,  3.95s/it]
+Requesting API:  70%|███████   | 380/541 [20:52<08:38,  3.22s/it]
+Requesting API:  70%|███████   | 381/541 [20:57<10:17,  3.86s/it]
+Requesting API:  71%|███████   | 382/541 [20:58<08:15,  3.12s/it]
+Requesting API:  71%|███████   | 383/541 [21:00<07:07,  2.70s/it]
+Requesting API:  71%|███████   | 384/541 [21:05<08:41,  3.32s/it]
+Requesting API:  71%|███████   | 385/541 [21:06<07:03,  2.71s/it]
+Requesting API:  71%|███████▏  | 386/541 [21:08<06:30,  2.52s/it]
+Requesting API:  72%|███████▏  | 388/541 [21:13<06:18,  2.47s/it]
+Requesting API:  72%|███████▏  | 389/541 [21:18<08:00,  3.16s/it]
+Requesting API:  72%|███████▏  | 390/541 [21:19<06:40,  2.65s/it]
+Requesting API:  72%|███████▏  | 391/541 [21:23<07:29,  3.00s/it]
+Requesting API:  72%|███████▏  | 392/541 [21:25<06:25,  2.59s/it]
+Requesting API:  73%|███████▎  | 393/541 [21:26<05:39,  2.30s/it]
+Requesting API:  73%|███████▎  | 394/541 [21:28<05:15,  2.15s/it]
+Requesting API:  73%|███████▎  | 395/541 [21:38<10:47,  4.43s/it]
+Requesting API:  73%|███████▎  | 396/541 [21:43<11:03,  4.58s/it]
+Requesting API:  73%|███████▎  | 397/541 [21:44<08:13,  3.43s/it]
+Requesting API:  74%|███████▎  | 398/541 [21:59<16:23,  6.88s/it]
+Requesting API:  74%|███████▍  | 399/541 [21:59<11:30,  4.86s/it]
+Requesting API:  74%|███████▍  | 400/541 [22:04<11:45,  5.00s/it]
+Requesting API:  74%|███████▍  | 401/541 [22:09<11:11,  4.80s/it]
+Requesting API:  74%|███████▍  | 402/541 [22:11<09:40,  4.17s/it]
+Requesting API:  74%|███████▍  | 403/541 [22:16<09:46,  4.25s/it]
+Requesting API:  75%|███████▍  | 404/541 [22:26<13:36,  5.96s/it]
+Requesting API:  75%|███████▍  | 405/541 [22:28<11:06,  4.90s/it]
+Requesting API:  75%|███████▌  | 406/541 [22:45<19:03,  8.47s/it]
+Requesting API:  75%|███████▌  | 407/541 [22:48<15:11,  6.80s/it]
+Requesting API:  75%|███████▌  | 408/541 [22:56<15:52,  7.16s/it]
+Requesting API:  76%|███████▌  | 409/541 [22:57<11:53,  5.41s/it]
+Requesting API:  76%|███████▌  | 410/541 [23:02<11:25,  5.23s/it]
+Requesting API:  76%|███████▌  | 411/541 [23:06<10:15,  4.73s/it]
+Requesting API:  76%|███████▌  | 412/541 [23:06<07:42,  3.59s/it]
+Requesting API:  76%|███████▋  | 413/541 [23:08<06:09,  2.88s/it]
+Requesting API:  77%|███████▋  | 414/541 [23:11<06:16,  2.96s/it]
+Requesting API:  77%|███████▋  | 415/541 [23:12<05:18,  2.53s/it]
+Requesting API:  77%|███████▋  | 416/541 [23:16<06:02,  2.90s/it]
+Requesting API:  77%|███████▋  | 417/541 [23:24<09:22,  4.54s/it]
+Requesting API:  77%|███████▋  | 418/541 [23:39<15:18,  7.47s/it]
+Requesting API:  77%|███████▋  | 419/541 [23:40<11:17,  5.56s/it]
+Requesting API:  78%|███████▊  | 420/541 [23:42<09:15,  4.59s/it]
+Requesting API:  78%|███████▊  | 421/541 [23:51<11:29,  5.75s/it]
+Requesting API:  78%|███████▊  | 422/541 [23:53<09:23,  4.74s/it]
+Requesting API:  78%|███████▊  | 423/541 [23:59<09:45,  4.96s/it]
+Requesting API:  78%|███████▊  | 424/541 [24:02<08:59,  4.61s/it]
+Requesting API:  79%|███████▊  | 425/541 [24:09<09:54,  5.13s/it]
+Requesting API:  79%|███████▊  | 426/541 [24:13<09:22,  4.89s/it]
+Requesting API:  79%|███████▉  | 427/541 [24:13<06:35,  3.47s/it]
+Requesting API:  79%|███████▉  | 428/541 [24:14<04:56,  2.63s/it]
+Requesting API:  79%|███████▉  | 429/541 [24:16<04:34,  2.45s/it]
+Requesting API:  79%|███████▉  | 430/541 [24:20<05:34,  3.02s/it]
+Requesting API:  80%|███████▉  | 431/541 [24:24<05:44,  3.14s/it]
+Requesting API:  80%|███████▉  | 432/541 [24:24<04:24,  2.43s/it]
+Requesting API:  80%|████████  | 433/541 [24:29<05:45,  3.20s/it]
+Requesting API:  80%|████████  | 434/541 [24:38<08:25,  4.73s/it]
+Requesting API:  80%|████████  | 435/541 [24:38<06:01,  3.41s/it]
+Requesting API:  81%|████████  | 436/541 [24:43<06:46,  3.88s/it]
+Requesting API:  81%|████████  | 437/541 [24:48<07:07,  4.11s/it]
+Requesting API:  81%|████████  | 438/541 [24:50<06:22,  3.71s/it]
+Requesting API:  81%|████████  | 439/541 [24:51<04:42,  2.77s/it]
+Requesting API:  81%|████████▏ | 440/541 [24:55<05:10,  3.07s/it]
+Requesting API:  82%|████████▏ | 441/541 [24:59<05:52,  3.53s/it]
+Requesting API:  82%|████████▏ | 442/541 [25:16<12:12,  7.40s/it]
+Requesting API:  82%|████████▏ | 443/541 [25:16<08:46,  5.37s/it]
+Requesting API:  82%|████████▏ | 444/541 [25:26<10:29,  6.49s/it]
+Requesting API:  82%|████████▏ | 445/541 [25:26<07:32,  4.72s/it]
+Requesting API:  82%|████████▏ | 446/541 [25:32<08:12,  5.18s/it]
+Requesting API:  83%|████████▎ | 447/541 [25:35<06:52,  4.39s/it]
+Requesting API:  83%|████████▎ | 448/541 [25:35<05:00,  3.23s/it]
+Requesting API:  83%|████████▎ | 449/541 [25:36<03:51,  2.52s/it]
+Requesting API:  83%|████████▎ | 450/541 [25:41<05:01,  3.31s/it]
+Requesting API:  83%|████████▎ | 451/541 [25:44<04:47,  3.20s/it]
+Requesting API:  84%|████████▎ | 452/541 [25:46<04:14,  2.86s/it]
+Requesting API:  84%|████████▎ | 453/541 [25:49<04:14,  2.89s/it]
+Requesting API:  84%|████████▍ | 454/541 [25:51<03:43,  2.57s/it]
+Requesting API:  84%|████████▍ | 455/541 [25:55<04:17,  2.99s/it]
+Requesting API:  84%|████████▍ | 456/541 [25:59<04:40,  3.30s/it]
+Requesting API:  84%|████████▍ | 457/541 [26:00<03:31,  2.51s/it]
+Requesting API:  85%|████████▍ | 458/541 [26:00<02:33,  1.84s/it]
+Requesting API:  85%|████████▍ | 459/541 [26:04<03:09,  2.31s/it]
+Requesting API:  85%|████████▌ | 461/541 [26:06<02:29,  1.87s/it]
+Requesting API:  85%|████████▌ | 462/541 [26:09<02:53,  2.20s/it]
+Requesting API:  86%|████████▌ | 463/541 [26:10<02:23,  1.84s/it]
+Requesting API:  86%|████████▌ | 464/541 [26:18<04:23,  3.42s/it]
+Requesting API:  86%|████████▌ | 465/541 [26:20<03:55,  3.09s/it]
+Requesting API:  86%|████████▌ | 466/541 [26:21<03:04,  2.46s/it]
+Requesting API:  86%|████████▋ | 467/541 [26:37<08:00,  6.49s/it]
+Requesting API:  87%|████████▋ | 468/541 [26:38<05:40,  4.66s/it]
+Requesting API:  87%|████████▋ | 469/541 [26:50<08:10,  6.81s/it]
+Requesting API:  87%|████████▋ | 470/541 [26:51<06:03,  5.13s/it]
+Requesting API:  87%|████████▋ | 471/541 [26:52<04:37,  3.97s/it]
+Requesting API:  87%|████████▋ | 472/541 [26:55<04:18,  3.75s/it]
+Requesting API:  87%|████████▋ | 473/541 [27:05<06:25,  5.67s/it]
+Requesting API:  88%|████████▊ | 474/541 [27:07<04:53,  4.39s/it]
+Requesting API:  88%|████████▊ | 475/541 [27:10<04:32,  4.13s/it]
+Requesting API:  88%|████████▊ | 476/541 [27:12<03:33,  3.28s/it]
+Requesting API:  88%|████████▊ | 477/541 [27:17<04:11,  3.93s/it]
+Requesting API:  88%|████████▊ | 478/541 [27:18<03:17,  3.14s/it]
+Requesting API:  89%|████████▊ | 479/541 [27:23<03:43,  3.60s/it]
+Requesting API:  89%|████████▊ | 480/541 [27:25<03:01,  2.97s/it]
+Requesting API:  89%|████████▉ | 481/541 [27:31<03:57,  3.96s/it]
+Requesting API:  89%|████████▉ | 482/541 [27:40<05:23,  5.49s/it]
+Requesting API:  89%|████████▉ | 483/541 [27:45<05:07,  5.30s/it]
+Requesting API:  89%|████████▉ | 484/541 [27:49<04:45,  5.00s/it]
+Requesting API:  90%|████████▉ | 485/541 [27:51<03:42,  3.98s/it]
+Requesting API:  90%|████████▉ | 486/541 [27:51<02:44,  3.00s/it]
+Requesting API:  90%|█████████ | 487/541 [27:54<02:33,  2.85s/it]
+Requesting API:  90%|█████████ | 488/541 [27:57<02:33,  2.90s/it]
+Requesting API:  90%|█████████ | 489/541 [27:59<02:13,  2.57s/it]
+Requesting API:  91%|█████████ | 490/541 [28:06<03:26,  4.04s/it]
+Requesting API:  91%|█████████ | 491/541 [28:07<02:40,  3.21s/it]
+Requesting API:  91%|█████████ | 492/541 [28:10<02:21,  2.89s/it]
+Requesting API:  91%|█████████ | 493/541 [28:12<02:05,  2.62s/it]
+Requesting API:  91%|█████████▏| 494/541 [28:13<01:45,  2.25s/it]
+Requesting API:  91%|█████████▏| 495/541 [28:22<03:19,  4.34s/it]
+Requesting API:  92%|█████████▏| 496/541 [28:22<02:20,  3.12s/it]
+Requesting API:  92%|█████████▏| 497/541 [28:24<01:52,  2.55s/it]
+Requesting API:  92%|█████████▏| 498/541 [28:31<02:47,  3.89s/it]
+Requesting API:  92%|█████████▏| 499/541 [28:33<02:21,  3.37s/it]
+Requesting API:  92%|█████████▏| 500/541 [28:35<02:07,  3.12s/it]
+Requesting API:  93%|█████████▎| 501/541 [28:36<01:34,  2.37s/it]
+Requesting API:  93%|█████████▎| 502/541 [28:43<02:27,  3.78s/it]
+Requesting API:  93%|█████████▎| 503/541 [28:47<02:22,  3.74s/it]
+Requesting API:  93%|█████████▎| 504/541 [28:48<01:51,  3.02s/it]
+Requesting API:  93%|█████████▎| 505/541 [28:58<02:59,  4.98s/it]
+Requesting API:  94%|█████████▎| 506/541 [29:01<02:42,  4.65s/it]
+Requesting API:  94%|█████████▎| 507/541 [29:05<02:22,  4.19s/it]
+Requesting API:  94%|█████████▍| 508/541 [29:05<01:38,  2.98s/it]
+Requesting API:  94%|█████████▍| 509/541 [29:08<01:41,  3.17s/it]
+Requesting API:  94%|█████████▍| 510/541 [29:16<02:16,  4.40s/it]
+Requesting API:  94%|█████████▍| 511/541 [29:17<01:44,  3.47s/it]
+Requesting API:  95%|█████████▍| 512/541 [29:18<01:24,  2.90s/it]
+Requesting API:  95%|█████████▍| 513/541 [29:29<02:25,  5.20s/it]
+Requesting API:  95%|█████████▌| 514/541 [29:29<01:39,  3.69s/it]
+Requesting API:  95%|█████████▌| 515/541 [29:33<01:38,  3.80s/it]
+Requesting API:  95%|█████████▌| 516/541 [29:39<01:49,  4.37s/it]
+Requesting API:  96%|█████████▌| 517/541 [29:39<01:15,  3.16s/it]
+Requesting API:  96%|█████████▌| 518/541 [29:44<01:23,  3.62s/it]
+Requesting API:  96%|█████████▌| 519/541 [29:45<01:04,  2.92s/it]
+Requesting API:  96%|█████████▌| 520/541 [29:47<00:53,  2.53s/it]
+Requesting API:  96%|█████████▋| 521/541 [29:49<00:51,  2.55s/it]
+Requesting API:  96%|█████████▋| 522/541 [29:50<00:34,  1.83s/it]
+Requesting API:  97%|█████████▋| 523/541 [29:51<00:32,  1.80s/it]
+Requesting API:  97%|█████████▋| 524/541 [30:06<01:34,  5.54s/it]
+Requesting API:  97%|█████████▋| 525/541 [30:06<01:04,  4.02s/it]
+Requesting API:  97%|█████████▋| 526/541 [30:11<01:05,  4.35s/it]
+Requesting API:  97%|█████████▋| 527/541 [30:13<00:49,  3.54s/it]
+Requesting API:  98%|█████████▊| 528/541 [30:15<00:42,  3.24s/it]
+Requesting API:  98%|█████████▊| 529/541 [30:16<00:30,  2.55s/it]
+Requesting API:  98%|█████████▊| 530/541 [30:17<00:20,  1.86s/it]
+Requesting API:  98%|█████████▊| 531/541 [30:19<00:20,  2.03s/it]
+Requesting API:  98%|█████████▊| 532/541 [30:20<00:14,  1.61s/it]
+Requesting API:  99%|█████████▊| 533/541 [30:23<00:17,  2.24s/it]
+Requesting API:  99%|█████████▊| 534/541 [30:27<00:19,  2.74s/it]
+Requesting API:  99%|█████████▉| 535/541 [30:27<00:11,  1.97s/it]
+Requesting API:  99%|█████████▉| 537/541 [30:28<00:04,  1.12s/it]
+Requesting API:  99%|█████████▉| 538/541 [30:28<00:02,  1.10it/s]
+Requesting API: 100%|█████████▉| 539/541 [30:29<00:02,  1.01s/it]
+Requesting API: 100%|█████████▉| 540/541 [30:30<00:00,  1.10it/s]
+Requesting API: 100%|██████████| 541/541 [30:34<00:00,  1.91s/it]
+Requesting API: 100%|██████████| 541/541 [30:34<00:00,  3.39s/it]
+2026-01-04:03:13:24 INFO     [loggers.evaluation_tracker:280] Output path not provided, skipping saving results aggregated
+local-chat-completions (base_url=http://qwen3-4b-instruct-vllm:8000/v1/chat/completions,model=qwen3-4b-instruct,num_concurrent=4), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: 1
+|Tasks |Version|Filter|n-shot|        Metric         |   |Value |   |Stderr|
+|------|------:|------|-----:|-----------------------|---|-----:|---|------|
+|ifeval|      4|none  |     0|inst_level_loose_acc   |↑  |0.9077|±  |   N/A|
+|      |       |none  |     0|inst_level_strict_acc  |↑  |0.8837|±  |   N/A|
+|      |       |none  |     0|prompt_level_loose_acc |↑  |0.8669|±  |0.0146|
+|      |       |none  |     0|prompt_level_strict_acc|↑  |0.8299|±  |0.0162|
+

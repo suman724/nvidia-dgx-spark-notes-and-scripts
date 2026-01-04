@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: eval-qwen3-chat-smoke
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: eval
+        image: python:3.11-slim
+        env:
+        - name: BASE_URL
+          value: "http://qwen3-4b-instruct-vllm:8000/v1/chat/completions"
+        command: ["/bin/bash","-lc"]
+        args:
+          - |
+            set -euxo pipefail
+            python -V
+            pip install -U pip
+            pip install -U lm-eval tenacity langdetect immutabledict
+
+            # A tiny task that runs quickly and validates the adapter works.
+            # Keep batch_size=1 for API models.
+            lm_eval \
+              --model local-chat-completions \
+              --model_args "base_url=${BASE_URL},model=qwen3-4b-instruct,num_concurrent=4" \
+              --tasks ifeval \
+              --apply_chat_template \
+              --batch_size 1 \
+              --seed 42
+

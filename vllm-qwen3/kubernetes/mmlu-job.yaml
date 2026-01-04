@@ -1,0 +1,76 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mmlu-eval
+  namespace: llm
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: eval
+        image: python:3.11-slim
+        env:
+          # Point lm-eval to your existing vLLM completions endpoint
+          - name: COMPLETIONS_URL
+            value: "http://qwen3-4b-instruct-vllm:8000/v1/completions"
+          - name: VLLM_MODEL_ID
+            value: "qwen3-4b-instruct"
+          - name: HF_TOKENIZER_REPO
+            value: "Qwen/Qwen3-4B-Instruct-2507"
+
+          - name: HF_HOME
+            value: /cache/huggingface
+          - name: TOKENIZERS_PARALLELISM
+            value: "false"
+
+        volumeMounts:
+          - name: hf-cache
+            mountPath: /cache
+
+        command: ["/bin/bash","-lc"]
+        args:
+          - |
+              set -euxo pipefail
+
+              echo "Python:" && python -V
+              echo "Installing deps..."
+              pip install -U pip
+              pip install -U 'lm-eval[api]'
+
+              echo "Sanity check: server reachable"
+              python - <<'PY'
+              import requests, os
+              url = os.environ["COMPLETIONS_URL"].replace("/v1/completions","/v1/models")
+              r = requests.get(url, timeout=10)
+              print("GET", url, "->", r.status_code)
+              print(r.text[:300])
+              r.raise_for_status()
+              PY
+
+              echo "Sanity check: tokenizer repo reachable (no auth)"
+              python - <<'PY'
+              import os
+              from transformers import AutoTokenizer
+              repo = os.environ["HF_TOKENIZER_REPO"]
+              tok = AutoTokenizer.from_pretrained(repo)
+              print("Tokenizer loaded:", tok.__class__.__name__, "from", repo)
+              PY
+
+              echo "Running MMLU eval on model:", "${VLLM_MODEL_ID}"
+              lm_eval \
+                --model local-completions \
+                --model_args "base_url=${COMPLETIONS_URL},model=${VLLM_MODEL_ID},num_concurrent=8,tokenizer=${HF_TOKENIZER_REPO},max_length=4096" \
+                --tasks mmlu \
+                --num_fewshot 5 \
+                --batch_size 1 \
+                --seed 42 \
+                --output_path /cache/mmlu_qwen3_instruct_seed42_limit50.json
+
+              echo "Done. Output in /cache:"
+              ls -lh /cache | sed -n '1,200p'
+      volumes:
+        - name: hf-cache
+          persistentVolumeClaim:
+            claimName: hf-cache
